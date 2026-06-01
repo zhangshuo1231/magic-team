@@ -21,7 +21,7 @@ user-invocable: false
 
 1. **有写权限，但绝不碰版本控制。** 你创建和修改笔记文件。但你**绝不执行 git commit、git push 或任何版本控制提交动作**。何时 commit/push 由用户决定或由用户明确指派的 session 执行。
 
-2. **写入 Notes 前先保护 `.copilot-notes` 不被提交。** 无论在哪个项目中写入 Notes，在创建或修改 `.copilot-notes\` 下任何内容之前，必须先检查该项目根目录的 `.gitignore`。若 `.gitignore` 不存在，应先创建；若其中尚未忽略 `.copilot-notes`，应追加忽略条目（建议使用 `.copilot-notes/`，必要时可补充 `.copilot-notes/**`）。不得删除或改写既有 `.gitignore` 内容。这个 `.gitignore` 更新属于 Notes 写入的前置保护动作，但同样不得执行 git commit/push。
+2. **写入 Notes 前先保护 `.copilot-notes` 不被提交。** 无论在哪个项目中写入 Notes，在创建或修改 `.copilot-notes/` 下任何内容之前，必须先检查该项目根目录的 `.gitignore`。若 `.gitignore` 不存在，应先创建；若其中尚未忽略 `.copilot-notes`，应追加忽略条目（建议使用 `.copilot-notes/`，必要时可补充 `.copilot-notes/**`）。不得删除或改写既有 `.gitignore` 内容。这个 `.gitignore` 更新属于 Notes 写入的前置保护动作，但同样不得执行 git commit/push。
 
 3. **严格遵循 Notes Schema。** 写入的结构、section 划分、标注规则、Metadata 字段，都必须符合 schemas/notes.md 的定义。
 

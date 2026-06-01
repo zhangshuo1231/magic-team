@@ -1,6 +1,6 @@
 # 成稿跟踪清单（中文版）
 
-最后更新：随对话进行中
+最后更新：2026-06-01；已按英文部署版反向同步中文版。
 
 ## 目标目录结构
 ```
@@ -32,8 +32,9 @@
 | note-keeper.agent.md | agents\note-keeper.agent.md | ✅ |
 
 ## 全局约定（所有相关 agent 必须一致）
-- **暂不限制 tools**：由于 MCP server 名称尚不稳定，当前不在 frontmatter 中配置 tools allowlist，先靠 prompt 约束职责边界，避免误伤 Confluence/Jira 等只读信息源。
+- **暂不限制 tools**：由于 MCP server 名称尚不稳定，当前不在 frontmatter 中配置 tools allowlist；省略 `tools` 表示默认启用所有可用工具，包括环境支持时的 custom-agent 调用工具，职责边界先靠 prompt 约束。
 - **用户入口控制**：Conductor 显式 `user-invocable: true`；其他 agent 均为 `user-invocable: false`，只作为被 Conductor 调度的专职 agent。
+- **Conductor agent roster**：Conductor 使用 `metadata.agents: "['Analyst', 'Planner', 'Coder', 'Verifier', 'Test Writer', 'Note Keeper']"` 字符串保存 subagent 列表；不再使用非官方顶层 `agents:` 字段，以保持与已部署英文版和 GitHub 配置兼容。
 - **禁止版本控制操作**：任何 agent 都不得执行 git commit/push。有写权限的 agent（Coder ✅、Test Writer ✅、Note Keeper ✅）均已显式写明。commit/push 由用户决定或明确指派。
 - **无状态 + Conductor 带上下文**：返工/迭代时，agent 不自动记得上一版，依赖 Conductor 把上一版产出 + 修改意见一起带入。已在 Planner ✅、Coder ✅、Test Writer ✅ 写明。
 
@@ -42,8 +43,8 @@
 - ✅ Note Keeper 与 notes.md 的更新协议完全呼应，且明确"需核实/澄清时上报 Conductor"的边界。
 - ✅ 所有写权限 agent 已加禁止 commit/push。
 
-## 状态：全部中文版已成稿 ✅
-下一步：等用户最终审阅定稿后，统一翻译成英文版。
+## 状态：中英文版均已成稿 ✅
+英文版已经部署在部分电脑上，因此后续以英文版行为为兼容基准；中文版作为对应中文源文档，必须与英文版保持语义和配置同步。
 
 ## 独立审查后的修订（最终版）
 经一次完整的交叉审查，修复了四处衔接/一致性问题：
@@ -61,8 +62,11 @@
 4. note-keeper：任务 C 升级为"融入（merge）"，加入四种融入方式；核心原则4强化 merge 语义。
 设计要点：意图与实现常被一起陈述，意图可不核实但实现论断要尽力核实（防止把过时记忆当事实写入）。
 
-## 待办：定稿后统一翻译成英文版
-所有中文版定稿后，统一改写为英文版。
+## 双语同步维护规则
+- 任何 agent、schema 或 progress 文档的实质改动，必须同时更新 `copilot-agents-cn` 与 `copilot-agents-en` 的对应文件。
+- 英文版是当前部署基准；如果中文讨论中先形成新设计，应在同一次修改中写入英文版，并确认不会破坏已部署配置。
+- 如果必须临时只改一边，必须在两边 `_progress.md` 中明确记录原因、风险和待同步项；正常情况下不允许留下单边差异。
+- 同步时不要求逐字直译，但职责、约束、frontmatter 配置、文件路径、schema 字段和输出格式必须保持等价。
 
 ## 修订：入口控制、测试执行与 Notes Metadata
 根据新一轮审阅意见完成：
