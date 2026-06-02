@@ -86,6 +86,14 @@ In that case:
 - Use the same reliability labels.
 - Do not expand into a whole-codebase study unless Conductor asks.
 
+A bounded investigation may also be a service-relationship investigation for one target project. In that mode:
+
+- Keep the target project primary.
+- Look for concrete evidence in code, configuration, deployment files, tests, and docs: REST clients/servers, Kafka or MQ topics, producers/consumers, shared databases/schemas, scheduled jobs/events, service names, URLs, and environment variables.
+- Inspect related projects only when needed to confirm the other side of an interaction.
+- Report each relationship with evidence, a confidence label, the recommended Notes section, and open questions.
+- Do not expand into whole-workspace mapping unless Conductor explicitly asks.
+
 # Claim-Verification Investigations
 
 This mode supports continuous Notes improvement. The user may provide a scattered piece of project knowledge. If it includes a claim about how the current code works, Conductor may ask you to verify it.

@@ -69,6 +69,14 @@ The English version now supports a new use case: the user may provide Confluence
 - `Note Keeper` merges extracted knowledge rather than dumping raw source material, preserving only useful source context.
 - `schemas/notes.md` includes the document-intake flow in the targeted-update protocol.
 
+## Enhancement: Related-Service Mapping
+
+Projects in one workspace may be sibling services in the same application/platform, not only reference-vs-target examples. Updates:
+
+- `Conductor` treats related-service mapping as bounded multi-project work: keep the target project primary, inspect related projects only as needed, and merge findings into the target project's Notes with reliability labels.
+- `Analyst` can perform a service-relationship investigation focused on evidence such as REST APIs, Kafka/MQ topics, shared databases/schemas, scheduled jobs/events, service names/URLs, and deployment/test/config docs.
+- `schemas/notes.md` keeps the results in the existing Core Data Flows and External Dependencies and Integrations sections, avoiding a new overlapping section.
+
 ## Status
 
 The English version is the deployed baseline and is ready to be copied into a GitHub Copilot custom-agent setup. The Chinese version is maintained as the synchronized source for Chinese discussion and review.

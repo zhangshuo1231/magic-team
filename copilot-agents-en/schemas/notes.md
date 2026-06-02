@@ -88,7 +88,7 @@ This section helps Planner locate code quickly.
 
 ## 5. Core Data Flows
 [Label] Trace the most important end-to-end paths:
-where requests/events/jobs enter, which layers/classes they pass through, how data transforms, and where results land.
+where requests/events/jobs enter, including cross-service inputs when relevant, which layers/classes they pass through, how data transforms, and where results land.
 
 ## 6. Key Design Decisions
 This section often contains more `[Inferred]` and `[Needs input]` content because code may not explain why choices were made.
@@ -99,7 +99,7 @@ This section often contains more `[Inferred]` and `[Needs input]` content becaus
 [Label] Core entities, DTOs, schemas, tables, relationships, and important invariants.
 
 ## 8. External Dependencies and Integrations
-[Label] External systems, databases, message queues, third-party services, APIs, and integration patterns.
+[Label] External systems and internal integrations, including related services/microservices, databases/shared schemas, message queues/topics, third-party services, APIs, and integration patterns.
 
 ## 9. Build and Runtime
 This section supports local debugging and validation.
